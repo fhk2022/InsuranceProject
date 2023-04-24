@@ -45,10 +45,11 @@ pipeline {
       sh 'docker push faisalhkdocker/insureproject:latest'
           } 
 }
-  stage('Deploy Application using ansible')
+  stage('Deploy Application using ansible') {
     steps {
       ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansbile/hosts', playbook: 'deploy.yml'
           }
+}
 }
 }
 
