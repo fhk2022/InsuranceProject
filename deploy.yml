@@ -1,7 +1,8 @@
 ---
 - name: Configure Docker on Deployserver
-  hosts: [localhost] 
+  hosts : all
   become: true
+  connection : ssh
   tasks:
   - name: apt updating
     command: sudo apt update
@@ -17,3 +18,4 @@
     become_user: root
   - name: Deploy the Image from DockerHub and Run as Container
     command: docker run -itd -p 8080:8081  faisalhkdocker/insureproject:latest     
+:
